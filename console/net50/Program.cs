@@ -7,13 +7,21 @@ namespace net50
     {
         static void Main(string[] args)
         {
-            var features = new string[] {
-                new RecordType("Record type", 1).ToString(),
+            var features = new Func<string>[] {
+                () => new RecordType("Record type", 1).ToString(),
+                () => {
+                    var x = new InitOnlySetter() {
+                        X = "Init only setter",
+                        Y = 2,
+                    };
+                    // x.X = "Never override once initialized";
+                    return x.ToString();
+                },
             };
 
             foreach (var feature in features)
             {
-                Console.WriteLine(feature);
+                Console.WriteLine(feature());
             }
         }
     }
