@@ -13,6 +13,15 @@ var features = new Func<string>[] {
         return x.ToString();
     },
     () => new TopLevelStatement().ToString(),
+    () => {
+        var x = new PatternMatchEnhancement(1);
+        var v = x.Version switch {
+            0 => $"alpha version",
+            1 or 2 => $"version {x.ToString()}",
+            _ => "stable version"
+        };
+        return $"PatternMatchEnhancement is added: {v}";        
+    }
 };
 
 foreach (var feature in features)
