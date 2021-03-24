@@ -21,6 +21,14 @@ var features = new Func<string>[] {
             _ => "stable version"
         };
         return $"PatternMatchEnhancement is added: {v}";        
+    },
+    () => {
+        FitAndFinish1 x = new();
+        return x.ToString(); 
+    },
+    () => {
+        FitAndFinish2 x = new(new());
+        return x.ToString(); 
     }
 };
 
