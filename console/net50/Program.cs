@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using v90.Features;
 
@@ -29,7 +29,8 @@ var features = new Func<string>[] {
     () => {
         FitAndFinish2 x = new(new());
         return x.ToString(); 
-    }
+    },
+    () => new CodeGenerator().ToString(),
 };
 
 foreach (var feature in features)
